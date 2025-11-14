@@ -14,34 +14,47 @@ public class ReverseKGroup {
                 head = node;
                 current = node;
             } else {
-                current.setNext(node);
-                current = current.getNext();
+                current.next = node;
+                current = current.next;
             }
         }
         return reverseKGroup(head, k);
     }
 
     private ListNode reverseKGroup(ListNode head, int k) {
-        ListNode newHead = null;
-        ListNode connect = null;
-        int count = 1;
-        while (head != null) {
-            ListNode current = new ListNode(head.val);
-            if (newHead == null) {
-                newHead = current;
-                connect = current;
-            } else {
-                current.next = newHead;
-                newHead = current;
-            }
-            head = head.next;
-            if (k == count) {
-                connect.next = head;
-                return newHead;
-            }
-
+        ListNode initialHead = head;
+        int count = 0;
+        while (initialHead != null) {
             count++;
+            initialHead = initialHead.next;
         }
-        return newHead;
+        if (count < k) {
+            return head;
+        }
+        int reversedCount = count / k;
+        ListNode[] heads = new ListNode[reversedCount];
+        ListNode[] tails = new ListNode[reversedCount];
+        ListNode current = head;
+        for (int i = 0; i < reversedCount; i++) {
+            for (int j = 0; j < k; j++) {
+                ListNode node = new ListNode(current.val);
+                current = current.next;
+                head = head.next;
+                if (tails[i] == null) {
+                    tails[i] = node;
+                }
+                if (heads[i] == null) {
+                    heads[i] = node;
+                } else {
+                    node.next = heads[i];
+                    heads[i] = node;
+                }
+            }
+        }
+        for (int i = 0; i < reversedCount - 1; i++) {
+            tails[i].next = heads[i + 1];
+        }
+        tails[reversedCount - 1].next = head;
+        return heads[0];
     }
 }

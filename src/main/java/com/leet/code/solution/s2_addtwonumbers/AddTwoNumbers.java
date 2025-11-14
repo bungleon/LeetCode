@@ -15,27 +15,26 @@ public class AddTwoNumbers {
             int val1 = 0;
             int val2 = 0;
             if (l1 != null) {
-                val1 = l1.getVal();
-                l1 = l1.getNext();
+                val1 = l1.val;
+                l1 = l1.next;
             }
             if (l2 != null) {
-                val2 = l2.getVal();
-                l2 = l2.getNext();
+                val2 = l2.val;
+                l2 = l2.next;
             }
             int sum = val1 + val2 + remaining;
             int intValue = sum % 10;
             remaining = sum / 10;
-            if(head == null){
+            if (head == null) {
                 head = new ListNode(intValue);
                 current = head;
-            }
-            else{
-                current.setNext(new ListNode(intValue));
-                current = current.getNext();
+            } else {
+                current.next = new ListNode(intValue);
+                current = current.next;
             }
         }
-        if(remaining!=0){
-            current.setNext(new ListNode(remaining));
+        if (remaining != 0) {
+            current.next = new ListNode(remaining);
         }
 
         return head;
@@ -46,8 +45,8 @@ public class AddTwoNumbers {
         ListNode head = new ListNode(array[0]);
         ListNode cur = head;
         for (int i = 1; i < array.length; i++) {
-            cur.setNext(new ListNode(array[i]));
-            cur=cur.getNext();
+            cur.next = new ListNode(array[i]);
+            cur = cur.next;
         }
         return head;
     }

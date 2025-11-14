@@ -14,8 +14,8 @@ public class MergeTwoSortedList {
                 head = node;
                 current = node;
             } else {
-                current.setNext(node);
-                current = current.getNext();
+                current.next = node;
+                current = current.next;
             }
         }
 
@@ -27,8 +27,8 @@ public class MergeTwoSortedList {
                 head2 = node;
                 current2 = node;
             } else {
-                current2.setNext(node);
-                current2 = current2.getNext();
+                current2.next = node;
+                current2 = current2.next;
             }
         }
         return mergeTwoLists(head, head2);
@@ -44,32 +44,32 @@ public class MergeTwoSortedList {
         ListNode head = null;
         ListNode current = null;
         while (list1 != null && list2 != null) {
-            if (list1.getVal() < list2.getVal()) {
+            if (list1.val < list2.val) {
                 if (head == null) {
                     head = list1;
                     current = head;
-                    list1 = list1.getNext();
+                    list1 = list1.next;
                 } else {
-                    current.setNext(list1);
-                    current = current.getNext();
-                    list1 = list1.getNext();
+                    current.next = list1;
+                    current = current.next;
+                    list1 = list1.next;
                 }
             } else {
                 if (head == null) {
                     head = list2;
                     current = head;
-                    list2 = list2.getNext();
+                    list2 = list2.next;
                 } else {
-                    current.setNext(list2);
-                    current = current.getNext();
-                    list2 = list2.getNext();
+                    current.next = list2;
+                    current = current.next;
+                    list2 = list2.next;
                 }
             }
-            if(list1==null){
-                current.setNext(list2);
+            if (list1 == null) {
+                current.next = list2;
             }
-            if(list2==null){
-                current.setNext(list1);
+            if (list2 == null) {
+                current.next = list1;
             }
         }
         return head;

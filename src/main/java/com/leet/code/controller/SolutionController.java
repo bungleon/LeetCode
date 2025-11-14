@@ -54,8 +54,8 @@ public class SolutionController {
         ListNode result = addTwoNumbers.addTwoNumbers1(l1, l2);
         List<Integer> retvalue = new ArrayList<>();
         while (result != null) {
-            retvalue.add(result.getVal());
-            result = result.getNext();
+            retvalue.add(result.val);
+            result = result.next;
         }
         return retvalue;
     }

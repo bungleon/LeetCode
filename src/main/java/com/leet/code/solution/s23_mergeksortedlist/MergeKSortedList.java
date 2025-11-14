@@ -16,7 +16,7 @@ public class MergeKSortedList {
                     head = node;
                     current = node;
                 } else {
-                    current.setNext(node);
+                    current.next=node;
                     current = current.next;
                 }
             }

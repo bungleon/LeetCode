@@ -12,7 +12,7 @@ public class RemoveNthNodeFromEndOfList {
                 head = node;
                 current = node;
             } else {
-                current.setNext(node);
+                current.next = node;
                 current = node;
             }
 
@@ -29,18 +29,18 @@ public class RemoveNthNodeFromEndOfList {
         if (n == 1) {
             previous = head;
             while (current != null) {
-                if (current.getNext() == null) {
+                if (current.next == null) {
                     if (previous == head) {
                         if(count==0){
                             return null;
                         }
 
                     }
-                    previous.setNext(null);
+                    previous.next = null;
                     return head;
                 }
                 previous=current;
-                current = current.getNext();
+                current = current.next;
                 count++;
             }
 
@@ -51,17 +51,17 @@ public class RemoveNthNodeFromEndOfList {
                     previous = head;
                 }
                 previousPrevious = previous;
-                previous = previous.getNext();
+                previous = previous.next;
             }
-            current = current.getNext();
+            current = current.next;
             count++;
         }
         if (previousPrevious != null) {
-            previousPrevious.setNext(previousPrevious.getNext().getNext());
+            previousPrevious.next = previousPrevious.next.next;
         }
         if(n==count){
             if(head!=null) {
-                head = head.getNext();
+                head = head.next;
             }
         }
         return head;
