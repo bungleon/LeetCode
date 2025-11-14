@@ -17,6 +17,7 @@ import com.leet.code.solution.s21_mergetwosortedlist.MergeTwoSortedList;
 import com.leet.code.solution.s22_generateparentheses.GenerateParentheses;
 import com.leet.code.solution.s23_mergeksortedlist.MergeKSortedList;
 import com.leet.code.solution.s24_swapnodesinpairs.SwapNodesInPairs;
+import com.leet.code.solution.s26_removeduplicate.RemoveDuplicate;
 import com.leet.code.solution.s2_addtwonumbers.AddTwoNumbers;
 import com.leet.code.solution.s3_longestsubstring.LongestSubstring;
 import com.leet.code.solution.s4_mediansortedarray.MedianForTwoSortedArray;
@@ -25,7 +26,7 @@ import com.leet.code.solution.s6_zigzagconversion.ZigzagConversion;
 import com.leet.code.solution.s7_reverseinteger.ReverseInteger;
 import com.leet.code.solution.s8_stringtointeger.StringToInteger;
 import com.leet.code.solution.s9_palindromenumber.PalindromeNumber;
-import com.leet.code.solution.s_25reversekgroup.ReverseKGroup;
+import com.leet.code.solution.s25_reversekgroup.ReverseKGroup;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -196,6 +197,12 @@ public class SolutionController {
     public Object reverseKGroup(@RequestBody ReverseKGroupRequest request) {
         ReverseKGroup reverseKGroup = new ReverseKGroup();
         return reverseKGroup.prepareNode(request.getList(), request.getK());
+    }
+
+    @PostMapping("/remove-duplicate")
+    public Object removeDuplicate(@RequestBody RemoveDuplicateRequest request) {
+        RemoveDuplicate removeDuplicate = new RemoveDuplicate();
+        return removeDuplicate.removeDuplicates(Arrays.stream(request.getNums()).mapToInt(i -> i).toArray());
     }
 
 }

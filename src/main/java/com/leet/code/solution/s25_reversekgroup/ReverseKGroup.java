@@ -1,4 +1,4 @@
-package com.leet.code.solution.s_25reversekgroup;
+package com.leet.code.solution.s25_reversekgroup;
 
 import com.leet.code.request.ListNode;
 
