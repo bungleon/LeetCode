@@ -1,7 +1,5 @@
 package com.leet.code.solution.s26_removeduplicate;
 
-import java.util.Arrays;
-
 public class RemoveDuplicate {
     public int removeDuplicates(int[] nums) {
         if (nums.length == 0) return 0;
